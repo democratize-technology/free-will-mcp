@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Integration tests for Free Willy MCP server."""
+"""Integration tests for Free Will MCP server."""
 import pytest
 
 from server import mcp

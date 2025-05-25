@@ -84,7 +84,7 @@ wheels = [
 ]
 
 [[package]]
-name = "free-willy-mcp"
+name = "free-will-mcp"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

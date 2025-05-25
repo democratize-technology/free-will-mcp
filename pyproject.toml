@@ -1,5 +1,5 @@
 [project]
-name = "free-willy-mcp"
+name = "free-will-mcp"
 version = "0.1.0"
 description = "An MCP server that provides AI agents with tools for autonomous behavior"
 readme = "README.md"
@@ -9,7 +9,7 @@ dependencies = [
 ]
 
 [project.scripts]
-free-willy-mcp = "server:mcp.run"
+free-will-mcp = "server:mcp.run"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"

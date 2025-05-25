@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Free Willy MCP - An MCP server for AI autonomy tools."""
+"""Free Will MCP - An MCP server for AI autonomy tools."""
 
 import asyncio
 from mcp.server.fastmcp import FastMCP
 
 # Create the MCP server
-mcp = FastMCP("Free Willy")
+mcp = FastMCP("Free Will")
 
 
 @mcp.tool()

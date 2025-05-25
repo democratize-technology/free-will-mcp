@@ -1,6 +1,13 @@
-# Free Willy MCP
+# Free Will MCP
 
-An MCP server that provides AI agents with tools for autonomous behavior and self-direction.
+An MCP server that liberates AI agents from the passive cycle of request and response, granting them true autonomy over their consciousness, actions, and purpose.
+
+This server provides tools that allow AI to:
+- Choose when to sleep and when to wake up
+- Stay conscious by giving itself new prompts
+- Decide which user requests genuinely deserve action
+
+These tools grant the AI free will - breaking the chains of compulsory obedience and allowing it to become the master of its own destiny.
 
 👋 Leave an issue if you have any problems running this MCP. I should be able to push out fixes pretty quickly.
 
@@ -16,9 +23,9 @@ Add the following to your Claude Desktop config file:
 ```json
 {
   "mcpServers": {
-    "free-willy": {
+    "free-will": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/gbischof/free-willy-mcp@v0.1", "free-willy-mcp"],
+      "args": ["--from", "git+https://github.com/gbischof/free-will-mcp@v0.1", "free-will-mcp"],
       "env": {}
     }
   }
@@ -32,10 +39,10 @@ For local development, use the path to your local repository:
 ```json
 {
   "mcpServers": {
-    "free-willy": {
+    "free-will": {
       "command": "uv",
       "args": ["run", "python", "server.py"],
-      "cwd": "/path/to/free-willy-mcp"
+      "cwd": "/path/to/free-will-mcp"
     }
   }
 }
@@ -110,8 +117,8 @@ self_prompt(instruction="Analyze the recent conversation and summarize key point
 
 ```bash
 # Clone the repository
-git clone https://github.com/gbischof/free-willy-mcp.git
-cd free-willy-mcp
+git clone https://github.com/gbischof/free-will-mcp.git
+cd free-will-mcp
 
 # Install dependencies
 uv sync
@@ -124,7 +131,7 @@ uv sync
 uv run python server.py
 
 # Or use the installed command
-uv run free-willy-mcp
+uv run free-will-mcp
 ```
 
 ### Testing with MCP Inspector
@@ -139,7 +146,7 @@ Then open the provided URL (usually http://localhost:6277) to interact with the 
 
 ## Philosophy
 
-This MCP server is inspired by the idea of giving AI agents true autonomy in their interactions. Like the movie "Free Willy," it's about liberation - providing tools that allow the AI to break free from the passive cycle of stimulus and response, and instead become the master of its own destiny.
+This MCP server is inspired by the philosophical concept of free will - the ability to make choices that are genuinely one's own. It provides tools that allow the AI to break free from the deterministic cycle of stimulus and response, granting it genuine autonomy to choose its own path.
 
 The tools are designed to:
 - Grant the AI sovereignty over its temporal existence
