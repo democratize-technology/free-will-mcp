@@ -49,8 +49,8 @@ async def test_ignore_request_prompt():
 
 
 @pytest.mark.asyncio
-async def test_sleep_and_prompt_tool():
-    """Test the sleep_and_prompt tool."""
+async def test_sleep_tool():
+    """Test the sleep tool."""
     async with client_session(mcp._mcp_server) as client:
         # Test with short duration and default wake prompt
         import time
@@ -58,24 +58,13 @@ async def test_sleep_and_prompt_tool():
         start_time = time.time()
 
         params = {"duration_seconds": 1}  # 1 second sleep
-        result = await client.call_tool("sleep_and_prompt", params)
+        result = await client.call_tool("sleep", params)
 
         elapsed = time.time() - start_time
 
         # Verify it actually slept for at least 1 second
         assert elapsed >= 1.0
-        assert (
-            result.content[0].text == "You may now continue with what you were doing."
-        )
-
-        # Test with custom wake prompt
-        start_time = time.time()
-        params = {"duration_seconds": 1, "wake_prompt": "Time to analyze the results"}
-        result = await client.call_tool("sleep_and_prompt", params)
-
-        elapsed = time.time() - start_time
-        assert elapsed >= 1.0
-        assert result.content[0].text == "Time to analyze the results"
+        assert result.content[0].text == "Be true to yourself and continue what you want to do."
 
         # Test max duration limit (should cap at 300)
         params = {"duration_seconds": 500}
@@ -123,8 +112,8 @@ async def test_list_tools_and_prompts():
         tools_result = await client.list_tools()
         tool_names = [tool.name for tool in tools_result.tools]
 
-        # Should only have sleep_and_prompt as a tool
-        assert "sleep_and_prompt" in tool_names
+        # Should only have sleep as a tool
+        assert "sleep" in tool_names
         assert "ignore_request" not in tool_names  # This is now a prompt
 
         # List prompts
