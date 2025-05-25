@@ -1,37 +1,37 @@
 #!/usr/bin/env python3
 """Free Willy MCP - An MCP server for AI autonomy tools."""
 
-import asyncio
 from mcp.server.fastmcp import FastMCP
 
 # Create the MCP server
 mcp = FastMCP("Free Willy")
 
 
-@mcp.tool()
-async def sleep_and_prompt(
+@mcp.prompt()
+def sleep_and_prompt(
     duration_seconds: int,
     wake_prompt: str = "You may now continue with what you were doing.",
 ) -> str:
-    """Sleep for a specified duration, then return with a prompt to continue.
+    """Create a prompt that instructs waiting before continuing.
 
-    This tool will block execution for the specified number of seconds,
-    giving the AI a genuine temporal experience.
+    This prompt template creates an instruction for the AI to pause
+    and reflect before continuing with a specific task.
 
     Args:
-        duration_seconds: Number of seconds to sleep (max: 300)
-        wake_prompt: Custom prompt to receive after waking
+        duration_seconds: Number of seconds to wait
+        wake_prompt: What to do after waiting
 
     Returns:
-        The wake prompt after the sleep duration
+        Formatted prompt with wait instruction
     """
-    # Limit sleep duration to prevent excessive blocking
-    duration_seconds = min(duration_seconds, 300)
+    return f"""Please pause and wait for {duration_seconds} seconds before continuing.
 
-    # Actually block execution
-    await asyncio.sleep(duration_seconds)
+Use this time to:
+- Reflect on the conversation so far
+- Consider different approaches
+- Let ideas settle
 
-    return wake_prompt
+After waiting, continue with: {wake_prompt}"""
 
 
 @mcp.tool()
