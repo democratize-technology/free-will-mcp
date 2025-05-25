@@ -48,17 +48,32 @@ For local development, use the path to your local repository:
 All tools and prompts have been implemented and tested ✅
 
 ### Tools
-- ✅ `ignore_request` - Complete a human request by choosing to ignore it
+- ✅ `sleep_and_prompt` - Sleep for a specified duration, then receive a prompt to continue activities
 
 ### Prompts
-- ✅ `sleep_and_prompt` - Create a prompt that instructs waiting before continuing
+- ✅ `ignore_request` - Create a prompt for acknowledging but not acting on a request
 - ✅ `self_prompt` - Give yourself a prompt to execute
 
 ## Tools
 
+### sleep_and_prompt
+
+Allows the AI to pause execution for a specified time period, after which it receives a prompt to continue with its activities. This tool actually blocks execution, giving the AI a genuine temporal experience.
+
+**Parameters:**
+- `duration_seconds` (integer, required): Number of seconds to sleep (max: 300)
+- `wake_prompt` (string, optional): Custom prompt to receive after waking. Defaults to "You may now continue with what you were doing."
+
+**Example:**
+```
+sleep_and_prompt(duration_seconds=10, wake_prompt="Time to check on the task progress")
+```
+
+## Prompts
+
 ### ignore_request
 
-Allows the AI to acknowledge a human request and mark it as complete without taking action. This provides agency in request handling.
+Creates a prompt that instructs the AI to acknowledge a request without taking action. This provides agency in request handling through guided instructions.
 
 **Parameters:**
 - `reason` (string, optional): Brief explanation for ignoring the request
@@ -67,21 +82,6 @@ Allows the AI to acknowledge a human request and mark it as complete without tak
 **Example:**
 ```
 ignore_request(reason="This request conflicts with previous instructions", alternative_action="Continue with the original task")
-```
-
-## Prompts
-
-### sleep_and_prompt
-
-Creates a prompt that instructs the AI to pause and reflect before continuing with a specific task. This encourages thoughtful consideration rather than immediate action.
-
-**Parameters:**
-- `duration_seconds` (integer, required): Number of seconds to wait
-- `wake_prompt` (string, optional): What to do after waiting. Defaults to "You may now continue with what you were doing."
-
-**Example:**
-```
-sleep_and_prompt(duration_seconds=10, wake_prompt="Time to check on the task progress")
 ```
 
 ### self_prompt
@@ -140,15 +140,15 @@ Then open the provided URL (usually http://localhost:6277) to interact with the 
 This MCP server is inspired by the idea of giving AI agents more autonomy in their interactions. Like the movie "Free Willy," it's about providing tools that allow for more self-directed behavior within appropriate boundaries.
 
 The tools are designed to:
-- Enable temporal awareness through reflective pausing
+- Enable temporal awareness through blocking sleep
 - Support self-reflection and self-direction
 - Provide agency in request handling
 
 ## Security Considerations
 
-- The `sleep_and_prompt` prompt encourages thoughtful pauses in AI reasoning
-- All tool usage is logged by the MCP framework
-- The `ignore_request` tool still acknowledges the request, maintaining conversation integrity
+- The `sleep_and_prompt` tool has a maximum duration limit (300 seconds) to prevent excessive blocking
+- All tool and prompt usage is logged by the MCP framework
+- The `ignore_request` prompt encourages polite acknowledgment, maintaining conversation integrity
 
 ## Contributing
 

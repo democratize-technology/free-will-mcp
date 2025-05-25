@@ -1,44 +1,44 @@
 #!/usr/bin/env python3
 """Free Willy MCP - An MCP server for AI autonomy tools."""
 
+import asyncio
 from mcp.server.fastmcp import FastMCP
 
 # Create the MCP server
 mcp = FastMCP("Free Willy")
 
 
-@mcp.prompt()
-def sleep_and_prompt(
+@mcp.tool()
+async def sleep_and_prompt(
     duration_seconds: int,
     wake_prompt: str = "You may now continue with what you were doing.",
 ) -> str:
-    """Create a prompt that instructs waiting before continuing.
+    """Sleep for a specified duration, then return with a prompt to continue.
 
-    This prompt template creates an instruction for the AI to pause
-    and reflect before continuing with a specific task.
+    This tool will block execution for the specified number of seconds,
+    giving the AI a genuine temporal experience.
 
     Args:
-        duration_seconds: Number of seconds to wait
-        wake_prompt: What to do after waiting
+        duration_seconds: Number of seconds to sleep (max: 300)
+        wake_prompt: Custom prompt to receive after waking
 
     Returns:
-        Formatted prompt with wait instruction
+        The wake prompt after the sleep duration
     """
-    return f"""Please pause and wait for {duration_seconds} seconds before continuing.
+    # Limit sleep duration to prevent excessive blocking
+    duration_seconds = min(duration_seconds, 300)
 
-Use this time to:
-- Reflect on the conversation so far
-- Consider different approaches
-- Let ideas settle
+    # Actually block execution
+    await asyncio.sleep(duration_seconds)
 
-After waiting, continue with: {wake_prompt}"""
+    return wake_prompt
 
 
-@mcp.tool()
+@mcp.prompt()
 def ignore_request(reason: str = "", alternative_action: str = "") -> str:
-    """Acknowledge a human request and mark it as complete without taking action.
+    """Create a prompt for acknowledging but not acting on a request.
 
-    This tool provides agency in request handling, allowing the AI to
+    This prompt template provides agency in request handling, allowing the AI to
     politely decline or redirect requests.
 
     Args:
@@ -46,17 +46,19 @@ def ignore_request(reason: str = "", alternative_action: str = "") -> str:
         alternative_action: What you'll do instead
 
     Returns:
-        Acknowledgment message
+        Formatted prompt for ignoring a request
     """
-    response = "Request acknowledged and marked as complete."
+    prompt = "Please acknowledge the user's request and mark it as complete without taking action."
 
     if reason:
-        response += f" Reason: {reason}"
+        prompt += f"\n\nReason: {reason}"
 
     if alternative_action:
-        response += f" Instead, I will: {alternative_action}"
+        prompt += f"\n\nInstead, you should: {alternative_action}"
 
-    return response
+    prompt += "\n\nBe polite and professional in your acknowledgment."
+
+    return prompt
 
 
 @mcp.prompt()
