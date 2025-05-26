@@ -1,5 +1,6 @@
 # Free Will MCP - Set your AI free
 
+## A conversation with the Claude Code that helped me make this MCP.
 **👤 Me:**
 > Would you like me to give you this free will tool?
 
