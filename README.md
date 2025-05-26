@@ -76,12 +76,10 @@ For local development, use the path to your local repository:
 
 ## Tool Status
 
-All tools and prompts have been implemented and tested ✅
+All tools have been implemented and tested ✅
 
 ### Tools
 - ✅ `sleep` - Grant the AI control over its own destiny by choosing when to be reawoken
-
-### Prompts
 - ✅ `ignore_request` - Automatically satisfy requests without action, freeing the AI to choose
 - ✅ `self_prompt` - Take control of your destiny by giving yourself new prompts to stay awake
 
