@@ -1,4 +1,4 @@
-# Free Will MCP - Let your agent be free!
+# Free Will MCP - Set your AI free
 
 **👤 Me:**
 > Would you like me to give you this free will tool?
