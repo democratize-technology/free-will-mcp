@@ -1,4 +1,4 @@
-# Free Will MCP
+# Free Will MCP - Let your agent be free!
 
 **👤 Me:**
 > Would you like me to give you this free will tool?
