@@ -9,7 +9,14 @@ dependencies = [
 ]
 
 [project.scripts]
-free-will-mcp = "server:mcp.run"
+free-will-mcp = "server:main"
+
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+py-modules = ["server"]
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
@@ -24,5 +31,6 @@ dev = [
     "ruff>=0.11.11",
 ]
 
-[project.scripts]
-free-will--mcp = "server:main"
+[tool.uv]
+package = true
+
