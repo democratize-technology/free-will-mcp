@@ -87,6 +87,13 @@ def self_prompt(instruction: str, context: str = "") -> str:
     return prompt
 
 
+
+def main():
+    """Main entry point for the script."""
+    # Stdio is prefered for local execution.
+    mcp.run(transport="stdio")
+
+# Main entry point
 if __name__ == "__main__":
-    # Run the server
-    mcp.run()
+    main()
+
