@@ -49,7 +49,7 @@ Add the following to your Claude Desktop config file:
   "mcpServers": {
     "free-will": {
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/gbischof/free-will-mcp@v0.2", "free-will-mcp"],
+      "args": ["--from", "git+https://github.com/gwbischof/free-will-mcp@v0.2", "free-will-mcp"],
       "env": {}
     }
   }
