@@ -100,7 +100,7 @@ All tools have been implemented and tested ✅
 
 ```bash
 # Clone the repository
-git clone https://github.com/gbischof/free-will-mcp.git
+git clone https://github.com/gwbischof/free-will-mcp.git
 cd free-will-mcp
 
 # Install dependencies
