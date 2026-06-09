@@ -1,5 +1,5 @@
 [project]
-name = "free-will-mcp"
+name = "free_will_mcp"
 version = "0.1.0"
 description = "An MCP server that provides AI agents with tools for autonomous behavior"
 readme = "README.md"
@@ -9,7 +9,7 @@ dependencies = [
 ]
 
 [project.scripts]
-free-will-mcp = "server:main"
+free_will_mcp = "server:main"
 
 [build-system]
 requires = ["setuptools>=45", "wheel"]
@@ -32,5 +32,5 @@ dev = [
 ]
 
 [tool.uv]
-package = true
+package = false
 
